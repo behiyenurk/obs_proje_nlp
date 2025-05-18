@@ -65,20 +65,21 @@ Projeyi daha kullanışlı ve kapsamlı hale getirmek için aşağıdaki özelli
 
 ## 📸 Ekran Görüntüleri
 
-### Giriş ve Kayıt sayfası
-![Giriş](screenshots/giris.png)
-![Kayıt](screenshots/kaydol.png)
+### Giriş ve Kayıt Sayfası
+<img src="screenshots/giris.png" alt="Giriş Sayfası" width="600"/>
+<br>
+<img src="screenshots/kaydol.png" alt="Kayıt Sayfası" width="600"/>
+
+### Öğrenci Paneli  
+<img src="screenshots/ogrenci_panel.png" alt="Öğrenci Paneli" width="600"/>
 
 ### Öğretmen Paneli  
-![Öğrenci Paneli](screenshots/ogrenci_panel.png)
-
-### Öğretmen Paneli  
-![Öğretmen Paneli](screenshots/ogretmen_panel.png)
+<img src="screenshots/ogretmen_panel.png" alt="Öğretmen Paneli" width="600"/>
 
 ### Müdür Paneli  
-![Müdür Paneli](screenshots/mudur_panel.png)
+<img src="screenshots/mudur_panel.png" alt="Müdür Paneli" width="600"/>
 
 ### Öğrenci Analiz Sayfası
-![Öğrenci Analiz](screenshots/ogrenci_analiz1.png)
-![Öğrenci Analiz](screenshots/ogrenci_analiz2.png)
-
+<img src="screenshots/ogrenci_analiz1.png" alt="Öğrenci Analiz 1" width="600"/>
+<br>
+<img src="screenshots/ogrenci_analiz2.png" alt="Öğrenci Analiz 2" width="600"/>

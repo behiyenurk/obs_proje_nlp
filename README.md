@@ -1,6 +1,8 @@
 # 🎓 Okul Yönetim Sistemi - Flask + Firebase
 
-Bu proje, öğrenci-öğretmen-müdür etkileşimini kolaylaştırmak amacıyla geliştirilen bir **Okul Yönetim Sistemi**dir. Öğrencilerin notları, devamsızlıkları ve öğretmen geri bildirimleri sistem üzerinden takip edilebilir. Aynı zamanda müdür, öğrenci başarı analizlerini grafik ve yapay zeka destekli analizlerle görüntüleyebilir.
+## Proje Tanımı
+
+Bu proje, öğrenci-öğretmen-müdür etkileşimini kolaylaştırmak amacıyla geliştirilen bir **Okul Yönetim Sistemi**dir. Sistem, öğrencilerin akademik notların ve devamsızlıkların takibini kolaylaştırır. Müdür panelinde yer alan grafikler ve yapay zeka destekli doğal dil işleme modülü sayesinde, öğrenci performansı çok boyutlu olarak analiz edilir ve eğitim yönetimine veri odaklı katkı sağlanır.
 
 ## Kullanılan Teknolojiler
 
@@ -34,7 +36,7 @@ Bu proje, öğrenci-öğretmen-müdür etkileşimini kolaylaştırmak amacıyla 
 - 🧠 NLP Tabanlı Geri Bildirim Analizi (Duygu analizi)
 - 🔍 Müdür Paneli ile detaylı öğrenci analizi
 
-  ## Firebase Yapısı
+## Firebase Yapısı
 
 - `users`: Tüm kullanıcılar (öğrenci, öğretmen, müdür)
 - `grades`: Öğrencilerin not bilgileri
@@ -50,3 +52,15 @@ Bu proje, öğrenci-öğretmen-müdür etkileşimini kolaylaştırmak amacıyla 
 - Python platformunu seçerek “Yeni özel anahtar oluştur” (Generate New Private Key) butonuna tıklayın.
 - Açılan uyarıda “Oluştur” diyerek .json dosyasını indirin. Dosya adını firebase_config.json olarak değiştirin.
 - İndirilen dosyayı proje klasörünüzün içine taşıyın.
+
+## Gelecek Planları (Roadmap)
+
+Projeyi daha kullanışlı ve kapsamlı hale getirmek için aşağıdaki özelliklerin eklenmesi planlanmaktadır:
+- **Haftalık Ders Programı Modülü**  
+  Öğrenciler ve öğretmenler için haftalık ders programlarının görüntülenebileceği, kişisel ders takibine olanak tanıyan modül.
+- **Öğrenci ve Öğretmen için Bildirim Sistemi**  
+  Not güncellemeleri, devamsızlık bildirimleri ve geri bildirimler için gerçek zamanlı bildirim mekanizması.
+- **Doğal Dil İşleme Modülünün Genişletilmesi**  
+  Geri bildirim özetleme, öneri sistemi ve gelişmiş duygu analizi ile yapay zeka destekli eğitim rehberliği.
+
+

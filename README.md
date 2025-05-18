@@ -63,4 +63,22 @@ Projeyi daha kullanışlı ve kapsamlı hale getirmek için aşağıdaki özelli
 - **Doğal Dil İşleme Modülünün Genişletilmesi**  
   Geri bildirim özetleme, öneri sistemi ve gelişmiş duygu analizi ile yapay zeka destekli eğitim rehberliği.
 
+## 📸 Ekran Görüntüleri
+
+### Giriş ve Kayıt sayfası
+![Giriş](screenshots/giris.png)
+![Kayıt](screenshots/kaydol.png)
+
+### Öğretmen Paneli  
+![Öğrenci Paneli](screenshots/ogrenci_panel.png)
+
+### Öğretmen Paneli  
+![Öğretmen Paneli](screenshots/ogretmen_panel.png)
+
+### Müdür Paneli  
+![Müdür Paneli](screenshots/mudur_panel.png)
+
+### Öğrenci Analiz Sayfası
+![Öğrenci Analiz](screenshots/ogrenci_analiz1.png)
+![Öğrenci Analiz](screenshots/ogrenci_analiz2.png)
 

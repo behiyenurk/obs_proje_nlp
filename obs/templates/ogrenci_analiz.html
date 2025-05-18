@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Öğrenci Analiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        select, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .section-title {
+            margin-top: 40px;
+            margin-bottom: 10px;
+            font-size: 20px;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Öğrenci Performans Analizi</h1>
+        
+        <h2>Öğrenci: {{ student_name }} (ID: {{ student_id }})</h2>
+
+        <!-- Ders Notları -->
+        <div class="section-title">Ders Notları:</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ders Adı</th>
+                    <th>Vize</th>
+                    <th>Quiz</th>
+                    <th>Final</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for subject, grades in grades.items() %}
+                <tr>
+                    <td>{{ subject }}</td>
+                    <td>{{ grades['Vize'] }}</td>
+                    <td>{{ grades['Quiz'] }}</td>
+                    <td>{{ grades['Final'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Devamsızlıklar -->
+        <div class="section-title">Devamsızlıklar:</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tarih</th>
+                    <th>Sebep</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for absence in attendance %}
+                <tr>
+                    <td>{{ absence['date'] }}</td>
+                    <td>{{ absence['reason'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="section-title">Duygu Analizi Özeti:</div>
+        <p>{{ sentiment_summary }}</p>
+
+
+        <div class="section-title">Duygu Analizi Grafiği:</div>
+        <img src="data:image/png;base64,{{ sentiment_image | safe }}" alt="Duygu Analizi Grafiği">
+
+
+        <div class="card mt-4">
+            <div class="section-title">Öğrenciye Ait Geri Bildirim Özeti:</div>         
+        <div class="card-body">
+            <p>{{ feedback_summary }}</p>
+        </div>
+
+        <div class="section-title">Geri Bildirimler:</div>
+
+        {% if feedbacks %}
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+            {% for feedback in feedbacks %}
+            <div style="
+                border-radius: 10px;
+                padding: 20px;
+                background-color: #f0f4f8;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+                border-left: 6px solid 
+                    {% if feedback.sentiment == 'olumlu' %}#2ecc71
+                    {% elif feedback.sentiment == 'olumsuz' %}#e74c3c
+                    {% else %}#95a5a6{% endif %};
+            ">
+                <div style="font-size: 18px; font-weight: bold; color: #34495e;">{{ feedback.subject }}</div>
+                <div style="color: #7f8c8d; font-size: 14px;">Öğretmen: {{ feedback.teacher_name }}</div>
+                <p style="margin-top: 10px; font-size: 16px; color: #2c3e50;">
+                    {{ feedback.message }}
+                </p>
+                <div style="margin-top: 10px;">
+                    <span style="
+                        display: inline-block;
+                        padding: 6px 12px;
+                        border-radius: 20px;
+                        font-size: 13px;
+                        color: white;
+                        background-color: 
+                            {% if feedback.sentiment == 'olumlu' %}#2ecc71
+                            {% elif feedback.sentiment == 'olumsuz' %}#e74c3c
+                            {% else %}#95a5a6{% endif %};
+                    ">
+                        {{ feedback.sentiment | capitalize }}
+                    </span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p style="font-style: italic; color: #7f8c8d;">Bu öğrenci için henüz geri bildirim yok.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

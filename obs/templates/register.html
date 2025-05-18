@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaydol</title>
+    <style>
+        /* Genel stil ayarları */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #F6F8FF; /* Soluk mavi tonlarında bir arka plan */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        /* Login container stil ayarları */
+        .login-container {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Başlık */
+        h2 {
+            color: rgb(76, 175, 80);
+            font-size: 36px;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        /* Form elemanları */
+        label {
+            text-align: left;
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"], select {
+            width: 100%;
+            padding: 15px;
+            margin: 12px 0;
+            border: 2px solid #E0E0E0;
+            border-radius: 20px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, select:focus {
+            border-color: rgb(76, 175, 80);
+            transform: scale(1.05);
+        }
+
+        /* Buton stil */
+        button {
+            background-color: rgb(76, 175, 80); /* Yeşil renk */
+            color: white;
+            padding: 18px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049; /* Koyu yeşil */
+            transform: translateY(-4px);
+        }
+
+        /* Kayıt linki */
+        p {
+            color: #666;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .login-link {
+            color: rgb(21, 175, 175);
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .login-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Animasyon */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .login-container {
+            animation: fadeIn 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Kaydol</h2>
+        <form action="/register" method="POST" id="registerForm">
+            <label for="name">Ad:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">E-posta:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Şifre:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="role">Rol:</label>
+            <select id="role" name="role" required>
+                <option value="" disabled selected>Rol Seçin</option>
+                <option value="ogrenci">Öğrenci</option>
+                <option value="ogretmen">Öğretmen</option>
+                <option value="mudur">Müdür</option>
+            </select>
+
+            <label for="branch">Branş (Sadece öğretmenler için):</label>
+            <select name="branch" id="branch">
+                <option value="">Branş seçin</option>
+                <option value="Matematik">Matematik</option>
+                <option value="Türkçe">Türkçe</option>
+                <option value="Fizik">Fizik</option>
+                <option value="Kimya">Kimya</option>
+                <option value="Biyoloji">Biyoloji</option>
+                <option value="Tarih">Tarih</option>
+                <option value="Coğrafya">Coğrafya</option>
+                <option value="Felsefe">Felsefe</option>
+                <option value="İngilizce">İngilizce</option>
+            </select>
+
+            <button type="submit">Kaydol</button>
+        </form>
+        <p>Zaten hesabınız var mı? <a href="{{ url_for('login') }}" class="login-link">Giriş Yap</a></p>
+    </div>
+
+    <script>
+        // Form doğrulama
+        const form = document.getElementById('registerForm');
+
+        form.addEventListener('submit', function (event) {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (email === "" || password === "") {
+                alert("E-posta ve şifre boş bırakılamaz!");
+                event.preventDefault(); // Formun gönderilmesini engelle
+            }
+        });
+    </script>
+</body>
+</html>

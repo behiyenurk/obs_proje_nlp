@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Yap</title>
+    <style>
+        /* Genel stil ayarları */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #F6F8FF; /* Soluk mavi tonlarında bir arka plan */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        /* Login container stil ayarları */
+        .login-container {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Başlık */
+        h2 {
+            color:rgb(76, 175, 80);
+            font-size: 36px;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        /* Form elemanları */
+        label {
+            text-align: left;
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            margin: 12px 0;
+            border: 2px solid #E0E0E0;
+            border-radius: 20px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        input[type="email"]:focus, input[type="password"]:focus {
+            border-color:rgb(76, 175, 80); 
+            transform: scale(1.05);
+        }
+
+        /* Buton stil */
+        button {
+            background-color:rgb(76, 175, 80); /* Yeşil renk */
+            color: white;
+            padding: 18px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049; /* Koyu yeşil */
+            transform: translateY(-4px);
+        }
+
+        /* Kayıt linki */
+        p {
+            color: #666;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .register-link {
+            color:rgb(21, 175, 175);
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .register-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Animasyon */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .login-container {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Giriş Yap</h2>
+        <form action="/login" method="POST" id="loginForm">
+            <label for="email">E-posta:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Şifre:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Giriş Yap</button>
+        </form>
+        <p>Hesabınız yok mu? <a href="{{ url_for('register') }}" class="register-link">Kayıt Ol</a></p>
+    </div>
+
+    <script>
+        // Form doğrulama
+        const form = document.getElementById('loginForm');
+
+        form.addEventListener('submit', function (event) {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (email === "" || password === "") {
+                alert("E-posta ve şifre boş bırakılamaz!");
+                event.preventDefault(); // Formun gönderilmesini engelle
+            }
+        });
+    </script>
+</body>
+</html>
+

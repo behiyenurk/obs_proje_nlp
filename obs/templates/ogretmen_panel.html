@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Öğretmen Paneli</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #eef2f7;
+      margin: 0;
+      padding: 0;
+    }
+  
+    .panel-container {
+      max-width: 1100px;
+      margin: 40px auto;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+  
+    h2, h3 {
+      text-align: center;
+      color: #333;
+    }
+  
+    .logout {
+      text-align: right;
+      margin-bottom: 20px;
+    }
+  
+    .logout a {
+      text-decoration: none;
+      color: white;
+      background-color: #e74c3c;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+  
+    .logout a:hover {
+      background-color: #c0392b;
+    }
+  
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+  
+    th, td {
+      padding: 8px 12px; /* Küçültülmüş padding */
+      border: 1px solid #ddd;
+      text-align: center;
+      font-size: 14px; /* Daha küçük yazı tipi */
+    }
+  
+    th {
+      background-color: #3498db;
+      color: white;
+    }
+  
+    form {
+      margin-top: 20px;
+    }
+  
+    label {
+      font-weight: bold;
+      display: block;
+      margin: 8px 0 4px; /* Küçültülmüş margin */
+    }
+  
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 8px; /* Küçültülmüş padding */
+      margin-bottom: 12px; /* Küçültülmüş margin */
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-size: 14px; /* Daha küçük yazı tipi */
+    }
+  
+    button {
+      background-color: #3498db;
+      color: white;
+      padding: 8px 16px; /* Küçültülmüş padding */
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.3s ease;
+    }
+  
+    button:hover {
+      background-color: #2980b9;
+    }
+  
+    .section {
+      margin-bottom: 40px;
+    }
+  
+    #averageGrade {
+      font-weight: bold;
+      font-size: 14px; /* Daha küçük yazı tipi */
+      color: #333;
+      margin-top: 20px;
+    }
+  
+    #searchInput {
+      margin-bottom: 20px;
+      padding: 8px;
+      font-size: 14px;
+      width: 100%;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+  
+    /* Not Güncelleme Formu Stil */
+    .update-grade-form {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .update-grade-form input[type="number"],
+    .update-grade-form select {
+      width: 50%; /* Form elemanlarını yan yana hizalar */
+      margin-right: 8px;
+    }
+  
+    .update-grade-form button {
+      width: 30%;
+    }
+  
+    .update-grade-form label {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="panel-container">
+    <div class="logout">
+      <a href="/logout">Çıkış Yap</a>
+    </div>
+
+    <h2>Hoş geldiniz, {{ session['user_name'] }}!</h2>
+
+    <!-- Arama Kutusu -->
+    <div class="section">
+      <label for="searchInput">Ara:</label>
+      <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Öğrenci veya Ders Ara...">
+    </div>
+
+    <!-- Ders Seçimi ve Notlar -->
+    <div class="section">
+      <h3>Öğrenci Notları</h3>
+      
+      <!-- Ders Seçim Dropdown -->
+      <label for="subjectSelect">Ders Seçin:</label>
+      <select id="subjectSelect" onchange="filterBySubject()">
+        <option value="all">Tüm Dersler</option>
+        <option value="Matematik">Matematik</option>
+        <option value="Fizik">Fizik</option>
+        <option value="Kimya">Kimya</option>
+        <option value="Biyoloji">Biyoloji</option>
+        <option value="Türkçe">Türkçe</option>
+        <option value="Coğrafya">Coğrafya</option>
+        <option value="Tarih">Tarih</option>
+        <option value="Felsefe">Felsefe</option>
+        <option value="İngilizce">İngilizce</option>
+        {% for subject in subjects %}
+          <option value="{{ subject }}">{{ subject }}</option>
+        {% endfor %}
+      </select>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Öğrenci Adı</th>
+            <th>Ders</th>
+            <th>Vize</th>
+            <th>Final</th>
+            <th>Quiz</th>
+            <th>Güncelle</th>
+          </tr>
+        </thead>
+        <tbody id="gradesTable">
+          {% for grade in grades %}
+            <tr data-subject="{{ grade['subject'] }}">
+              <td>{{ grade['student_name'] }}</td>
+              <td>{{ grade['subject'] }}</td>
+              <td>{{ grade['Vize'] }}</td>
+              <td>{{ grade['Final'] }}</td>
+              <td>{{ grade['Quiz'] }}</td>
+              <td>
+                <form action="{{ url_for('update_grade', student_id=grade['student_id'], subject=grade['subject']) }}" method="POST">
+                  <input type="number" name="new_grade" value="{{ grade['Vize'] }}" min="0" max="100">
+                  <select name="grade_type" required>
+                    <option value="Vize" {% if grade['type'] == 'Vize' %}selected{% endif %}>Vize</option>
+                    <option value="Final" {% if grade['type'] == 'Final' %}selected{% endif %}>Final</option>
+                    <option value="Quiz" {% if grade['type'] == 'Quiz' %}selected{% endif %}>Quiz</option>
+                  </select>
+                  <button type="submit">Güncelle</button>
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      
+      <div id="averageGrade">Ders Ortalaması: 0</div>
+
+  <!-- Sayfalama Kontrolleri -->
+  <div id="paginationControls">
+    {% if page > 1 %}
+      <a href="{{ url_for('ogretmen_panel', page=page-1) }}">⟵ Önceki</a>
+    {% endif %}
+    <span>Sayfa {{ page }}</span>
+    {% if next_page %}
+      <a href="{{ url_for('ogretmen_panel', page=next_page) }}">Sonraki ⟶</a>
+    {% endif %}
+  </div>
+
+  <script>
+    // Arama fonksiyonu
+    function searchTable() {
+      var input = document.getElementById('searchInput').value.toLowerCase();
+      var rows = document.querySelectorAll("#gradesTable tr");
+
+      rows.forEach(row => {
+        var studentName = row.cells[0].textContent.toLowerCase();
+        var subject = row.cells[1].textContent.toLowerCase();
+        row.style.display = (studentName.includes(input) || subject.includes(input)) ? '' : 'none';
+      });
+
+      updateAverage();
+    }
+
+    // Ders filtreleme
+    function filterBySubject() {
+      var selected = document.getElementById("subjectSelect").value;
+      var rows = document.querySelectorAll("#gradesTable tr");
+
+      rows.forEach(row => {
+        var subject = row.getAttribute("data-subject");
+        row.style.display = (selected === "all" || subject === selected) ? '' : 'none';
+      });
+
+      updateAverage();
+    }
+
+    // Ortalama hesaplama
+    function updateAverage() {
+      var total = 0;
+      var count = 0;
+
+      document.querySelectorAll('#gradesTable tr').forEach(row => {
+        if (row.style.display === 'none') return;
+
+        let vize = parseFloat(row.cells[2].textContent) || 0;
+        let final = parseFloat(row.cells[3].textContent) || 0;
+        let quiz = parseFloat(row.cells[4].textContent) || 0;
+
+        total += vize + final + quiz;
+        count += 3;
+      });
+
+      let average = count > 0 ? (total / count).toFixed(2) : "0";
+      document.getElementById("averageGrade").textContent = "Ders Ortalaması: " + average;
+    }
+
+    // Sayfa yüklendiğinde ortalama hesapla
+    window.onload = updateAverage;
+  </script>
+    
+    <!-- Not Ekleme -->
+    <div class="section">
+      <h3>Not Ekle</h3>
+      <form action="{{ url_for('add_grade') }}" method="POST">
+        <label>Öğrenci:</label>
+        <select name="student_id" required>
+          {% for student in students %}
+          <option value="{{ student['id'] }}">{{ student['name'] }} (ID: {{ student['id'] }})</option>
+          {% endfor %}
+        </select>
+
+        <label>Ders:</label>
+        <input type="text" name="subject" required>
+
+        <label>Not:</label>
+        <input type="number" name="score" required>
+
+        <label>Not Türü:</label>
+        <select name="grade_type" required>
+          <option value="Vize">Vize</option>
+          <option value="Final">Final</option>
+          <option value="Quiz">Quiz</option>
+        </select>
+
+        <button type="submit">Not Ekle</button>
+      </form>
+    </div>
+
+    <!-- Devamsızlık -->
+    <div class="section">
+      <h3>Devamsızlık Ekle</h3>
+      <form action="{{ url_for('add_attendance') }}" method="POST">
+        <label>Öğrenci:</label>
+        <select name="student_id" required>
+          {% for student in students %}
+          <option value="{{ student['id'] }}">{{ student['name'] }} (ID: {{ student['id'] }})</option>
+          {% endfor %}
+        </select>
+
+        <label>Tarih:</label>
+        <input type="date" name="date" required>
+
+        <label>Devamsızlık Sebebi:</label>
+        <input type="text" name="reason">
+
+        <button type="submit">Devamsızlık Ekle</button>
+      </form>
+    </div>
+
+    <!-- Öğrencilere Görüş Gönder -->
+    <div class="section">
+      <h3>Öğrencilere Görüş Gönder</h3>
+      <form method="POST" action="/ogretmen/gorus">
+        <label>Öğrenci:</label>
+        <select name="ogrenci" required>
+          {% for student in students %}
+          <option value="{{ student['id'] }}">{{ student['name'] }}</option>
+          {% endfor %}
+        </select>
+
+        <label>Ders:</label>
+        <input type="text" name="ders" required>
+
+        <label>Mesaj:</label>
+        <textarea name="mesaj" rows="4" required></textarea>
+
+        <button type="submit">Gönder</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

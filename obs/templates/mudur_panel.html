@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Müdür Paneli</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        select, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .section-title {
+            margin-top: 40px;
+            margin-bottom: 10px;
+            font-size: 20px;
+            color: #2c3e50;
+        }
+
+        .input-large {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Müdür Paneli</h1>
+
+        <form method="POST" action="/mudur_panel">
+            <label for="student_id">Öğrenci Seçin:</label>
+            <select name="student_id" id="student_id" required>
+                <option value="">-- Öğrenci Seçin --</option>
+                {% for student in students %}
+                <option value="{{ student.id }}">{{ student.name }} (ID: {{ student.id }})</option>                {% endfor %}
+            </select>
+
+            <label for="data_type">Veri Türü Seçin:</label>
+            <select name="data_type" id="data_type" required>
+                <option value="grades">Notlar</option>
+                <option value="attendance">Devamsızlık</option>
+                <option value="feedback">Geri Bildirim</option>
+            </select>
+
+            <button type="submit">Göster</button>
+        </form>
+
+        {% if grades %}
+            <div class="section-title">Notlar</div>
+            <table>
+                <tr>
+                    <th>Öğrenci ID</th>
+                    <th>Ders</th>
+                    <th>Vize</th>
+                    <th>Final</th>
+                    <th>Quiz</th>
+                </tr>
+                {% for grade in grades %}
+                <tr>
+                    <td>{{ grade[0] }}</td>
+                    <td>{{ grade[1] }}</td>
+                    <td>{{ grade[2] }}</td>
+                    <td>{{ grade[3] }}</td>
+                    <td>{{ grade[4] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+
+        {% if attendance %}
+            <div class="section-title">Devamsızlıklar</div>
+            <table>
+                <tr>
+                    <th>Öğrenci ID</th>
+                    <th>Tarih</th>
+                    <th>Sebep</th>
+                </tr>
+                {% for att in attendance %}
+                <tr>
+                    <td>{{ att[0] }}</td>
+                    <td>{{ att[1] }}</td>
+                    <td>{{ att[2] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+
+        {% if feedbacks %}
+            <div class="section-title">Geri Bildirimler</div>
+            <table>
+                <tr>
+                    <th>Geri Bildirim</th>
+                    <th>Ders</th>
+                    <th>Öğretmen ID</th>
+                </tr>
+                {% for fb in feedbacks %}
+                <tr>
+                    <td>{{ fb[1] }}</td>
+                    <td>{{ fb[2] }}</td>
+                    <td>{{ fb[3] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+
+        <h2>Öğrenci Analizini Görüntüle</h2>
+        <form action="/ogrenci_analiz" method="GET">
+            <label for="student_id">Öğrenci ID:</label>
+            <input type="text" id="student_id" name="student_id" class="input-large" required>
+        
+            <label for="student_name">Öğrenci Adı:</label>
+            <input type="text" id="student_name" name="student_name" class="input-large" required>
+        
+            <button type="submit">Öğrenci Hakkında Analiz Bilgilerini Talep Et</button>
+        </form>
+        
+        <!-- Çıkış Butonu -->
+        <a href="{{ url_for('logout') }}" style="display: left; text-align: center; padding: 10px; background-color: #e74c3c; color: white; border-radius: 5px; text-decoration: none; font-weight: bold;">
+            Çıkış Yap
+        </a>
+
+    </div>
+</body>
+</html>

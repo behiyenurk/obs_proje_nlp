@@ -42,6 +42,7 @@ Bu proje, öğrenci-öğretmen-müdür etkileşimini kolaylaştırmak amacıyla 
 - `feedbacks`: Öğretmen geri bildirimleri
 
 ## firebase_config.json dosyası için;
+
 -https://console.firebase.google.com/ adresine gidip Google hesabınızla giriş yapın.
 -Var olan projenizi seçin veya sağ üstten “Proje ekle” diyerek yeni proje oluşturun.
 -Soldaki menüden "Proje Ayarları"na tıklayın.

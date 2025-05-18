@@ -43,10 +43,10 @@ Bu proje, öğrenci-öğretmen-müdür etkileşimini kolaylaştırmak amacıyla 
 
 ## firebase_config.json dosyası için;
 
--https://console.firebase.google.com/ adresine gidip Google hesabınızla giriş yapın.
--Var olan projenizi seçin veya sağ üstten “Proje ekle” diyerek yeni proje oluşturun.
--Soldaki menüden "Proje Ayarları"na tıklayın.
--Üst sekmelerden “Hizmet hesapları” (Service Accounts) kısmına geçin.
--Python platformunu seçerek “Yeni özel anahtar oluştur” (Generate New Private Key) butonuna tıklayın.
--Açılan uyarıda “Oluştur” diyerek .json dosyasını indirin. Dosya adını firebase_config.json olarak değiştirin.
--İndirilen dosyayı proje klasörünüzün içine taşıyın.
+- https://console.firebase.google.com/ adresine gidip Google hesabınızla giriş yapın.
+- Var olan projenizi seçin veya sağ üstten “Proje ekle” diyerek yeni proje oluşturun.
+- Soldaki menüden "Proje Ayarları"na tıklayın.
+- Üst sekmelerden “Hizmet hesapları” (Service Accounts) kısmına geçin.
+- Python platformunu seçerek “Yeni özel anahtar oluştur” (Generate New Private Key) butonuna tıklayın.
+- Açılan uyarıda “Oluştur” diyerek .json dosyasını indirin. Dosya adını firebase_config.json olarak değiştirin.
+- İndirilen dosyayı proje klasörünüzün içine taşıyın.

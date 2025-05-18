@@ -66,9 +66,9 @@ Projeyi daha kullanışlı ve kapsamlı hale getirmek için aşağıdaki özelli
 ## 📸 Ekran Görüntüleri
 
 ### Giriş ve Kayıt Sayfası
-<img src="screenshots/giris.png" alt="Giriş Sayfası" width="600"/>
+<img src="screenshots/giris.png" alt="Giriş Sayfası" width="300"/>
 <br>
-<img src="screenshots/kaydol.png" alt="Kayıt Sayfası" width="600"/>
+<img src="screenshots/kaydol.png" alt="Kayıt Sayfası" width="300"/>
 
 ### Öğrenci Paneli  
 <img src="screenshots/ogrenci_panel.png" alt="Öğrenci Paneli" width="600"/>

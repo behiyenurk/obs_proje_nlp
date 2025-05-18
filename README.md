@@ -71,15 +71,15 @@ Projeyi daha kullanışlı ve kapsamlı hale getirmek için aşağıdaki özelli
 <img src="screenshots/kaydol.png" alt="Kayıt Sayfası" width="300"/>
 
 ### Öğrenci Paneli  
-<img src="screenshots/ogrenci_panel.png" alt="Öğrenci Paneli" width="600"/>
+<img src="screenshots/ogrenci_panel.png" alt="Öğrenci Paneli" width="300"/>
 
 ### Öğretmen Paneli  
-<img src="screenshots/ogretmen_panel.png" alt="Öğretmen Paneli" width="600"/>
+<img src="screenshots/ogretmen_panel.png" alt="Öğretmen Paneli" width="300"/>
 
 ### Müdür Paneli  
-<img src="screenshots/mudur_panel.png" alt="Müdür Paneli" width="600"/>
+<img src="screenshots/mudur_panel.png" alt="Müdür Paneli" width="300"/>
 
 ### Öğrenci Analiz Sayfası
-<img src="screenshots/ogrenci_analiz1.png" alt="Öğrenci Analiz 1" width="600"/>
+<img src="screenshots/ogrenci_analiz1.png" alt="Öğrenci Analiz 1" width="300"/>
 <br>
-<img src="screenshots/ogrenci_analiz2.png" alt="Öğrenci Analiz 2" width="600"/>
+<img src="screenshots/ogrenci_analiz2.png" alt="Öğrenci Analiz 2" width="300"/>

@@ -62,10 +62,12 @@ Bu proje, öğrenci-öğretmen-müdür etkileşimini kolaylaştırmak amacıyla 
     <strong>Projeyi Klonlayın:</strong><br>
     Terminal veya komut satırında aşağıdaki komutu çalıştırın:
     <pre><code>git clone https://github.com/behiyenurk/obs_proje_nlp.git
-cd obs_proje_nlp</code></pre>
-  Eğer sisteminizde git yüklü değilse [buraya tıklayarak projeyi ZIP olarak indirebilirsiniz](https://github.com/behiyenurk/obs_proje_nlp/archive/refs/heads/main.zip). İndirdiğiniz dosyayı açın ve klasöre girin. 
+  cd obs_proje_nlp</code></pre>
+  Eğer sisteminizde <code>git</code> yüklü değilse, 
+    <a href="https://github.com/behiyenurk/obs_proje_nlp/archive/refs/heads/main.zip" download>
+      buraya
+    </a> tıklayarak projeyi ZIP olarak indirebilirsiniz. İndirdiğiniz dosyayı açın ve klasöre girin.
   </li>
-
   <li>
     <strong>Gerekli Kütüphaneleri Yükleyin:</strong>
     <pre><code>pip install -r requirements.txt</code></pre>
@@ -73,7 +75,10 @@ cd obs_proje_nlp</code></pre>
 
   <li>
     <strong>Firebase Ayarlarını Yapın</strong>
-    <pre><code>https://github.com/behiyenurk/obs_proje_nlp?tab=readme-ov-file#firebase_configjson-dosyas%C4%B1-i%C3%A7in</code></pre>
+    <pre>Firebase Console’dan <code>firebase_config.json</code> dosyasını indirip proje klasörüne yerleştirin.</pre>
+    <br>
+    İndirmek için lütfen "firebase_config dosyası için" bölümünü inceleyin
+    <br>
   </li>
 
   <li>

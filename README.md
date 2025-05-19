@@ -53,6 +53,8 @@ Bu proje, öğrenci-öğretmen-müdür etkileşimini kolaylaştırmak amacıyla 
 - Açılan uyarıda “Oluştur” diyerek .json dosyasını indirin. Dosya adını firebase_config.json olarak değiştirin.
 - İndirilen dosyayı proje klasörünüzün içine taşıyın.
 
+![image](https://github.com/user-attachments/assets/481d87da-2fe8-4878-91f8-ac19f2fdffca)
+
 ## Gelecek Planları (Roadmap)
 
 Projeyi daha kullanışlı ve kapsamlı hale getirmek için aşağıdaki özelliklerin eklenmesi planlanmaktadır:

@@ -53,7 +53,39 @@ Bu proje, öğrenci-öğretmen-müdür etkileşimini kolaylaştırmak amacıyla 
 - Açılan uyarıda “Oluştur” diyerek .json dosyasını indirin. Dosya adını firebase_config.json olarak değiştirin.
 - İndirilen dosyayı proje klasörünüzün içine taşıyın.
 
+## Dosya Dizini
 ![image](https://github.com/user-attachments/assets/481d87da-2fe8-4878-91f8-ac19f2fdffca)
+
+## Kurulum ve Çalıştırma
+<ol>
+  <li>
+    <strong>Projeyi Klonlayın:</strong><br>
+    Terminal veya komut satırında aşağıdaki komutu çalıştırın:
+    <pre><code>git clone (https://github.com/behiyenurk/obs_proje_nlp.git)
+cd obs_proje_nlp</code></pre>
+  </li>
+
+  <li>
+    <strong>Gerekli Kütüphaneleri Yükleyin:</strong>
+    <pre><code>pip install -r requirements.txt</code></pre>
+  </li>
+
+  <li>
+    <strong>Firebase Ayarlarını Yapın --> firebase_config.json</strong>
+  </li>
+
+  <li>
+    <strong>Uygulamayı Başlatın:</strong>
+    <pre><code>python app.py</code></pre>
+  </li>
+
+  <li>
+    <strong>Tarayıcıda Açın:</strong><br>
+    Aşağıdaki adresi ziyaret ederek uygulamayı kullanmaya başlayabilirsiniz:
+    <br>
+    <a href="http://127.0.0.1:5000" target="_blank">http://127.0.0.1:5000</a>
+  </li>
+</ol>
 
 ## Gelecek Planları (Roadmap)
 

@@ -60,10 +60,10 @@ Bu proje, öğrenci-öğretmen-müdür etkileşimini kolaylaştırmak amacıyla 
 <ol>
   <li>
     <strong>Projeyi Klonlayın:</strong><br>
-    Eğer sisteminizde <code>git</code> yüklü değilse, <a href="https://git-scm.com/downloads" target="_blank">buradan</a> indirip kurabilirsiniz.<br>
     Terminal veya komut satırında aşağıdaki komutu çalıştırın:
     <pre><code>git clone https://github.com/behiyenurk/obs_proje_nlp.git
 cd obs_proje_nlp</code></pre>
+  Eğer sisteminizde git yüklü değilse [buraya tıklayarak projeyi ZIP olarak indirebilirsiniz](https://github.com/behiyenurk/obs_proje_nlp/archive/refs/heads/main.zip). İndirdiğiniz dosyayı açın ve klasöre girin. 
   </li>
 
   <li>
@@ -72,7 +72,8 @@ cd obs_proje_nlp</code></pre>
   </li>
 
   <li>
-    <strong>Firebase Ayarlarını Yapın --> firebase_config.json</strong>
+    <strong>Firebase Ayarlarını Yapın</strong>
+    <pre><code>https://github.com/behiyenurk/obs_proje_nlp?tab=readme-ov-file#firebase_configjson-dosyas%C4%B1-i%C3%A7in</code></pre>
   </li>
 
   <li>

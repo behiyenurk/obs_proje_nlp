@@ -60,6 +60,7 @@ Bu proje, öğrenci-öğretmen-müdür etkileşimini kolaylaştırmak amacıyla 
 <ol>
   <li>
     <strong>Projeyi Klonlayın:</strong><br>
+    Eğer sisteminizde <code>git</code> yüklü değilse, <a href="https://git-scm.com/downloads" target="_blank">buradan</a> indirip kurabilirsiniz.<br>
     Terminal veya komut satırında aşağıdaki komutu çalıştırın:
     <pre><code>git clone https://github.com/behiyenurk/obs_proje_nlp.git
 cd obs_proje_nlp</code></pre>

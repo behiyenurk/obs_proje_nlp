@@ -11,6 +11,21 @@ Bu proje, öğrenci-öğretmen-müdür etkileşimini kolaylaştırmak amacıyla 
 - **HTML / CSS / JavaScript** (Frontend)
 - **Doğal Dil İşleme** (Geri bildirimlerde duygu analizi, geri bildirim özetleme)
 
+## Kullanılan Modeller
+
+- **Duygu Analizi Modeli (BERT):**  
+  Türkçe duygu analizi için `savasy/bert-base-turkish-sentiment-cased` modeli kullanılmıştır.  
+  ```python
+  sentiment_tokenizer = AutoTokenizer.from_pretrained("savasy/bert-base-turkish-sentiment-cased")
+  sentiment_model = AutoModelForSequenceClassification.from_pretrained("savasy/bert-base-turkish-sentiment-cased")
+  sentiment_analyzer = pipeline("sentiment-analysis", model=sentiment_model, tokenizer=sentiment_tokenizer)
+
+- **Metin Özetleme (BART):**  
+  Metin özetleme için `facebook/bart-large-cnn` modeli kullanılmıştır.  
+  ```python
+  summarizer_tokenizer = AutoTokenizer.from_pretrained("facebook/bart-large-cnn")
+  summarizer_model = AutoModelForSeq2SeqLM.from_pretrained("facebook/bart-large-cnn")
+
 ## Roller
 
 - **Öğrenci:**  

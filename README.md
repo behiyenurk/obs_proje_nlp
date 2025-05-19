@@ -61,7 +61,7 @@ Bu proje, öğrenci-öğretmen-müdür etkileşimini kolaylaştırmak amacıyla 
   <li>
     <strong>Projeyi Klonlayın:</strong><br>
     Terminal veya komut satırında aşağıdaki komutu çalıştırın:
-    <pre><code>git clone (https://github.com/behiyenurk/obs_proje_nlp.git)
+    <pre><code>git clone https://github.com/behiyenurk/obs_proje_nlp.git
 cd obs_proje_nlp</code></pre>
   </li>
 
